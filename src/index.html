@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>重点税源直报系统 -- 四川省网上办税服务厅</title>
+    <!--[if lt IE 9]>
+    <script src="./static/lib/oldie/html5shiv.min.js"></script>
+    <script src="./static/lib/oldie/respond.min.js"></script>
+    <script src="./static/lib/oldie/json3.min.js"></script>
+    <script src="./static/lib/oldie/es5-shim.min.js"></script>
+    <script src="./static/lib/oldie/es5-sham.min.js"></script>
+    <script src="./static/lib/oldie/promise.js"></script>
+    <script src="./static/lib/oldie/IE9.js"></script>
+    <![endif]-->
+    <script>
+        /*IE8兼容start*/
+        if (!Array.prototype.indexOf) {
+            Array.prototype.indexOf = function (item, i) {
+                //alert("prototyping...");
+                i || (i = 0);
+                var length = this.length;
+                if (i < 0) i = length + i;
+                for (; i < length; i++)
+                    if (this[i] === item) return i;
+                return -1;
+            };
+        }
+        if (!window.WebSocket) {
+            window.WebSocket = function () { };
+            window.WebSocket.prototype = {
+                onmessage: function () { },
+                onclose: function () { },
+                onopen: function () { },
+                close: function(){}
+            }
+        }
+        /*IE8兼容end*/
+    </script>
+    <style type="text/css">
+        .ms-controller{
+            visibility: hidden
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                四川国税网上办税服务厅
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li  class="active"><a href="#">重点税源直报</a></li>
+            <li><a href="#">历史记录</a></li>
+            <li><a href="#">操作手册</a></li>
+        </ul>
+        <div class="container ms-controller" ms-controller="user_ctrl">
+            <p class="navbar-text navbar-right">您好：<a href="#" style="padding-right: 20px;">{{@user.username}}</a>
+                <a href="#" class="navbar-link">系统检测</a> |
+                <a href="#" class="navbar-link">退出</a> |
+                <a href="#" class="navbar-link" style="color: #d10010;">网站地图</a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div  style="margin: 0px 20px;"  ms-controller="tab_ctrl">
+    <!-- 操作按钮 -->
+    <div>
+        <div class="btn-group" role="flow" aria-label="...">
+            <button type="button" class="btn btn-default" ms-on-click="saveBtnClick">保存</button>
+            <button type="button" class="btn btn-default">校验</button>
+            <button type="button" class="btn btn-default">提交</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="..." style="margin-left: 30px;">
+            <button type="button" class="btn btn-danger">重置</button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    更多
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">打印报表</a></li>
+                    <li><a href="#">导出Excel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- 报表页 -->
+    <div style="margin-top: 10px;">
+        <xmp ms-widget="[{is:'ms-tab', dataObj: @dataObj},@config]"></xmp>
+    </div>
+
+</div>
+
+</body>
+</html>

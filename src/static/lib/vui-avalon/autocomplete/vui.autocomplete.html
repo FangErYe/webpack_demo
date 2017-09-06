@@ -1,0 +1,9 @@
+<div class="dropdown" ms-controller="autocompleteCtrl" ms-on-scan="@parsingData">
+    <input type="text" class="text-input" ms-click="@onClick" ms-blur="@onBlur" />
+    <span class="caret"></span>
+    <ul ms-visible="@dropShow" class="dropdown-menu">
+        <li ms-for="($index,el) in @data">
+            <a href="javascript:void(0)" ms-attr="{title: ''}">{{@el.name}}</a>
+        </li>
+    </ul>
+</div>
